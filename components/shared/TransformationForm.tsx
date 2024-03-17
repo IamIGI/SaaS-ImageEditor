@@ -96,7 +96,7 @@ const TransformationForm = ({
         ...transformationConfig,
       });
 
-      const imageData = {
+      const imageData: ImageConfig = {
         title: values.title,
         publicId: image?.publicId,
         transformationType: type,
@@ -182,12 +182,15 @@ const TransformationForm = ({
           [fieldName === 'prompt' ? 'prompt' : 'to']: value,
         },
       }));
-    }, 1000);
+    }, 1000)();
     return onChangeField(value);
   };
 
   const onTransformHandler = async () => {
     setIsTransforming(true);
+    // console.log('onTransformHandler');
+    // console.log(newTransformation);
+    // console.log(transformationConfig);
     setTransformationConfig(
       deepMergeObjects(newTransformation, transformationConfig)
     );
@@ -199,21 +202,27 @@ const TransformationForm = ({
   };
 
   useEffect(() => {
-    console.log(image);
-    console.log(transformationType.config);
-    console.log(type);
-    if (image && (type === 'restore' || type === 'remove')) {
+    // console.log(image);
+    // console.log(transformationType.config);
+    // console.log(type);
+    if (image && (type === 'restore' || type === 'removeBackground')) {
       setNewTransformation(transformationType.config);
     }
   }, [image, transformationType.config, type]);
 
-  useEffect(() => {
-    console.log(newTransformation);
-    console.log('isTransforming: ' + isTransforming);
-    console.log('newTransformation === null: ' + newTransformation === null);
-    console.log('Statement: ' + isTransforming || newTransformation === null);
-    console.log('---------------------------------');
-  }, [newTransformation, isTransforming]);
+  // useEffect(() => {
+  //   console.log('TransformationCOnfig-------------');
+  //   console.log(transformationConfig);
+  //   console.log('---------------------------------');
+  // }, [transformationConfig]);
+
+  // useEffect(() => {
+  //   console.log(newTransformation);
+  //   console.log('isTransforming: ' + isTransforming);
+  //   console.log('newTransformation === null: ' + newTransformation === null);
+  //   console.log('Statement: ' + isTransforming || newTransformation === null);
+  //   console.log('---------------------------------');
+  // }, [newTransformation, isTransforming]);
 
   return (
     <Form {...form}>
@@ -345,7 +354,7 @@ const TransformationForm = ({
             className="submit-button capitalize"
             disabled={isSubmitting}
           >
-            {isSubmitting ? 'Submitting' : 'Save Image'}
+            {isSubmitting ? 'Submitting...' : 'Save Image'}
           </Button>
         </div>
       </form>
