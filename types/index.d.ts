@@ -17,40 +17,30 @@ declare type UpdateUserParams = {
   photo: string;
 };
 
+declare type ImageConfig = {
+  _id?: string;
+  title: string;
+  publicId: string;
+  transformationType: string;
+  width: number;
+  height: number;
+  config: any;
+  secureURL: string;
+  transformationURL: string;
+  aspectRatio: string | undefined;
+  prompt: string | undefined;
+  color: string | undefined;
+};
+
 // ====== IMAGE PARAMS
 declare type AddImageParams = {
-  image: {
-    title: string;
-    publicId: string;
-    transformationType: string;
-    width: number;
-    height: number;
-    config: any;
-    secureURL: string;
-    transformationURL: string;
-    aspectRatio: string | undefined;
-    prompt: string | undefined;
-    color: string | undefined;
-  };
+  image: ImageConfig;
   userId: string;
   path: string;
 };
 
 declare type UpdateImageParams = {
-  image: {
-    _id: string;
-    title: string;
-    publicId: string;
-    transformationType: string;
-    width: number;
-    height: number;
-    config: any;
-    secureURL: string;
-    transformationURL: string;
-    aspectRatio: string | undefined;
-    prompt: string | undefined;
-    color: string | undefined;
-  };
+  image: ImageConfig;
   userId: string;
   path: string;
 };
