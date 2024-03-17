@@ -199,10 +199,21 @@ const TransformationForm = ({
   };
 
   useEffect(() => {
-    if (image && (type === 'restore' || type === 'removeBackground')) {
+    console.log(image);
+    console.log(transformationType.config);
+    console.log(type);
+    if (image && (type === 'restore' || type === 'remove')) {
       setNewTransformation(transformationType.config);
     }
   }, [image, transformationType.config, type]);
+
+  useEffect(() => {
+    console.log(newTransformation);
+    console.log('isTransforming: ' + isTransforming);
+    console.log('newTransformation === null: ' + newTransformation === null);
+    console.log('Statement: ' + isTransforming || newTransformation === null);
+    console.log('---------------------------------');
+  }, [newTransformation, isTransforming]);
 
   return (
     <Form {...form}>

@@ -114,7 +114,7 @@ export async function getAllImages({
       secure: true,
     });
 
-    let expression = 'folder=imaginify';
+    let expression = 'folder=sass_image_editor';
 
     if (searchQuery) {
       expression += ` AND ${searchQuery}`;
